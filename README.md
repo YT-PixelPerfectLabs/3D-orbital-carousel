@@ -1,6 +1,6 @@
 ## Demo
 
-[3D Orbital Carousel]()
+[3D Orbital Carousel](https://stalwart-raindrop-adbc0a.netlify.app/)
 
 [Codepen](https://codepen.io/PixelPerfectLabs)
 
