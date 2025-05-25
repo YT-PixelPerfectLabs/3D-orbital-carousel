@@ -1,0 +1,137 @@
+/* ==== GLOBAL RESET & BASE STYLES ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: black;
+  color: white;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  overscroll-behavior: none;
+}
+h2 {
+  font-size: 8vw;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ==== CONTAINER STRUCTURE ==== */
+.orbit_carousel {
+  position: relative;
+}
+.orbit_track {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.orbit_sticky {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+}
+
+/* ==== 3D RING SETUP ==== */
+.orbit_wrap {
+  opacity: 0;
+  will-change: contents;
+  --item-width: 30vw;
+  --gap: 30vw;
+  --rotate: 0deg;
+  --z-depth: 0px;
+}
+.orbit_wrap > div {
+  transform-style: preserve-3d;
+  transform: translate3d(0, 0, var(--z-depth)) rotateX(var(--camera-x, 50deg)) rotateY(var(--rotate));
+}
+
+/* ==== RING ITEMS ==== */
+.orbit_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.orbit_item {
+  position: absolute;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  flex: none;
+  width: var(--item-width);
+}
+.orbit_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+.orbit_ratio {
+  padding-top: 120%;
+  width: 100%;
+}
+
+/* ==== TEXT PANELS ==== */
+.orbit_content {
+  z-index: 2;
+  position: relative;
+}
+.orbit_text_item {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* ==== NAVIGATION ==== */
+.orbit_nav {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+.orbit_nav_sticky {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+.orbit_arrow {
+  width: 3rem;
+  height: 3rem;
+  background: #ffffff;
+  border-radius: 100vw;
+  border: none;
+  cursor: pointer;
+}
+.orbit_arrow svg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.is-inactive {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 991px) {
+  .orbit_wrap {
+    --item-width: 70vw;
+    --gap: 40vw;
+  }
+  h2 {
+    font-size: 13vw;
+  }
+}
